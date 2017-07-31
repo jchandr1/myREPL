@@ -1,0 +1,28 @@
+{
+  "name": "myREPL",
+  "version": "1.0.0",
+  "description": "my REPL that does stuff and saves files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchandr1/myREPL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchandr1/myREPL/issues"
+  },
+  "homepage": "https://github.com/jchandr1/myREPL#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mysql": "^2.14.0",
+    "sequelize": "^4.4.2"
+  }
+}
