@@ -1,10 +1,5 @@
 const Sequelize = require('sequelize');
-
-const db = new Sequelize('myREPL', 'student', 'student', {
-  host: '127.0.0.1',
-  port: 3000,
-  dialect: 'mysql',
-});
+const db = require('./config.js');
 
 const savedFiles = db.define('savedFiles', {
   id: {
@@ -14,5 +9,15 @@ const savedFiles = db.define('savedFiles', {
   },
   username: Sequelize.STRING // Sequelize.INT for ID, verification stuff
 })
+console.log('a');
+savedFiles.sync({ force: true })
+.then(() => {
+  return savedFiles.bulkCreate([{username: 'hello'}, {username: '2'}])
+})
+console.log('b');
 
-module.exports = db;
+// savedFiles.create({ username: 'hello' })
+// .then(()=>console.log('it worked'))
+// .catch(err => console.log('error ', err));
+
+module.exports = savedFiles;
