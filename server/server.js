@@ -7,7 +7,17 @@ const axios = require('axios');
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/client'));
+app.use(express.static('/Users/student/code/myREPL/compiled'));
+app.use((req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+});
+
+app.post('/compile', (req, res) => {
+  console.log('code= ', req.body);
+  // console.log('result= ', eval(req.body.code));
+  res.end();
+});
 
 // app.post('/save', (req, res) => {
 //   files.build({ username:'hello' }).save
@@ -18,6 +28,6 @@ app.listen(4000, (err) => {
   if (err) {
     console.log("server error");
   } else {
-    console.log("Listening to port 3000");
+    console.log("Listening to port 4000");
   }
 });

@@ -1,28 +1,23 @@
 const path = require('path');
- 
-module.exports = {
-  context: path.join(__dirname, 'client'),
-  entry: [
-    './main.js',
-  ],
+
+const webpackConfig = {
+  entry: path.resolve(__dirname, './client/main.js'),
   output: {
-    path: path.join(__dirname, 'compiled'),
+    path: path.resolve(__dirname, './compiled'),
     filename: 'bundle.js',
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
-      },
-    ],
+    loaders: [],
   },
   resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules'),
-    ],
+    extensions: ['.js', '.jsx'],
   },
 };
+webpackConfig.module.loaders.push({
+  test: /\.js[x]?$/,
+  exclude: /node_modules/,
+  loader: 'babel-loader',
+  options: { presets: ['es2015', 'react'] },
+});
+
+module.exports = webpackConfig;
