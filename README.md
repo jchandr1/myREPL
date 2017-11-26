@@ -1,2 +1,2 @@
 # myREPL
-my REPL that does stuff and saves files
+my REPL that runs js code and saves files
